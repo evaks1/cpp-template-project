@@ -1,7 +1,12 @@
+cmake_minimum_required(VERSION 3.10)
+project(ZipfsLaw)
 
-# Look for headers in the include directory
+# Set C++ standard
+set(CMAKE_CXX_STANDARD 17)
+
+# Include the directory with header files
 include_directories(${CMAKE_SOURCE_DIR}/include)
-add_library(some_library SHARED some_library.cpp)
 
-# You can also add any stand alone executables
-# add_executable(example main.cpp) # Will make a binary called "example" inside build/bin using main.cpp
+# Add executables for each main file
+add_executable(main_zipfs_containers main_zipfs_containers.cpp)
+add_executable(main_zipfs_algorithms main_zipfs_algorithms.cpp)

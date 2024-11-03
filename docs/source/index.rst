@@ -1,18 +1,9 @@
-|project| documentation
-===================================
-
-Welcome to the landing page!
-
-A section
-----------
-
-.. doxygennamespace:: homework
-
-
-Docs
-====
-
+Welcome to Els’s homework’s documentation!
+===========================================
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
+   classes
+   files
+   

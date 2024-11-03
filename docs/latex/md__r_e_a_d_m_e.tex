@@ -1,0 +1,74 @@
+\chapter{A template for a C++ project with tests and documentation}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{A template for a C++ project with tests and documentation@{A template for a C++ project with tests and documentation}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+ This is an example C++ project that includes tests using GTest and documentation using Doxygen+\+Sphinx+breathe. The project is built using CMake.\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysubsection{\texorpdfstring{Prerequisites}{Prerequisites}}\label{md__r_e_a_d_m_e_autotoc_md1}
+Install the dependencies using conda\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{conda\ env\ create\ -\/f\ environment.yml}
+
+\end{DoxyCode}
+ This will create a conda environment called {\ttfamily cppdev} which you can activate with\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{conda\ activate\ cppdev}
+
+\end{DoxyCode}
+ If you do not have conda installed, I recommend you \href{https://github.com/conda-forge/miniforge}{\texttt{ https\+://github.\+com/conda-\/forge/miniforge}} . {\bfseries{You will have to activate the environment every time you open a new terminal.}}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysubsection{\texorpdfstring{Building the project}{Building the project}}\label{md__r_e_a_d_m_e_autotoc_md2}
+To build the project, create a build directory and run CMake from there\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mkdir\ build}
+\DoxyCodeLine{cd\ build}
+\DoxyCodeLine{cmake\ ..}
+\DoxyCodeLine{cmake\ -\/-\/build\ .}
+
+\end{DoxyCode}
+ In Windows, you might need to specify the generator as Ninja\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{cmake\ -\/G\ "{}Ninja"{}\ ..}
+\DoxyCodeLine{cmake\ -\/-\/build\ .}
+
+\end{DoxyCode}
+ \hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsubsection{\texorpdfstring{You can now run the tests\+:}{You can now run the tests\+:}}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{ctest}
+
+\end{DoxyCode}
+ It might be called ctest.\+exe in Windows. Every test included in the source codes under {\ttfamily tests} will be run.\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsubsection{\texorpdfstring{Rendering the documentation}{Rendering the documentation}}\label{md__r_e_a_d_m_e_autotoc_md4}
+The documentation will also be generated in the {\ttfamily build/docs/sphinx/index.\+html} directory. Open the {\ttfamily index.\+html} file in a web browser to view it. In OSX, you can use the {\ttfamily open} command\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{open\ docs/sphinx/index.html}
+
+\end{DoxyCode}
+ In Windows, you can use the {\ttfamily start} command\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{start\ docs\(\backslash\)sphinx\(\backslash\)index.html}
+
+\end{DoxyCode}
+ and in Linux, you can use {\ttfamily xdg-\/open}\+: 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{xdg-\/open\ docs/sphinx/index.html}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysubsection{\texorpdfstring{Cleaning the project}{Cleaning the project}}\label{md__r_e_a_d_m_e_autotoc_md5}
+To clean the project, just remove the {\ttfamily build} directory\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{rm\ -\/rf\ build}
+
+\end{DoxyCode}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{\texorpdfstring{About}{About}}\label{md__r_e_a_d_m_e_autotoc_md6}
+You can use this repo as a template for other projects. Look for the places where the current files appear (like tests/\+CMake\+Lists.\+txt mentioning test\+\_\+my\+\_\+library.\+cpp) to learn how to add your own files.
+
+GTest codes are in the {\ttfamily tests} directory, and code is in the {\ttfamily src} directory. Both the codes under {\ttfamily src} and {\ttfamily tests} will look for headers in the {\ttfamily include} directory.
+
+The documentation is generated in the {\ttfamily docs} directory. CMake will first run Doxygen to generate an XML database with the comments in the code, then Sphinx to will use that and the Re\+STructured\+Text files under {\ttfamily docs/source} to generate the documentation webpage.
+
+Some variables in the root {\ttfamily CMake\+Lists.\+txt} are used to customize the webpage, like the project name, version, and author. You can change them to fit your project. By default, {\ttfamily docs/source/index.\+rst} will list the documentation for every class and function under the namespace "{}homework"{}. 
